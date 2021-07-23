@@ -3,8 +3,8 @@ title: setuptoolsの未来
 date: 2021-07-22
 ---
 
-setuptoolsはPythonにおけるライブラリ配布のためのツールとして長らく利用されています。
-配布物の作成方法はPEP 517で標準化されpoetryやflitのようなツールが作成されています。
+[setuptools](https://setuptools.readthedocs.io/en/latest/)はPythonにおけるライブラリ配布のためのツールとして長らく利用されています。
+配布物の作成方法は[PEP 517](https://www.python.org/dev/peps/pep-0517/)で標準化されpoetryやflitのようなツールが作成されています。
 これらのツールはPEP 517に対して開発されてきたためpyproject.tomlでプロジェクトメタデータを記述しています。
 しかしsetuptoolsはプロジェクトメタデータをsetup.py, setup.cfgに記述する方法をとっており、これらのファイルがまだ必要となっています。
 これらのファイルが必要となる理由といつまで必要となるのか整理しました。
