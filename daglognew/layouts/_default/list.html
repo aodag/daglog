@@ -1,0 +1,10 @@
+{{ define "main" }}
+<h1 class="title">{{ .Title }}</h1>
+{{ range .Pages }}
+<div class="block">
+  <h2 class="title"><a href="{{.Permalink}}">{{ .Title }}</a></h2>
+  {{ .Summary }}
+</div>
+{{ end }}
+{{ template "pagination" (dict "paginator" .Paginator) }}
+{{ end }}

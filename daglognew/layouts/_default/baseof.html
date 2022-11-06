@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  {{ partial "pagination" }}
+  <head>
+    <meta charset="utf-8">
+    <title>{{ block "title" . }}
+      {{ .Page.Title }}:{{ .Site.Title }}
+      {{ end }}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  </head>
+  <body>
+    <nav class="navbar is-dark">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+          Daglog
+        </a>
+
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="/posts">
+            Posts
+          </a>
+        </div>
+      </div>
+    </nav>
+    {{ if not .IsHome }}
+    <nav class="breadcrumb">
+      {{ partial "breadcrumb" . }}
+    </nav>
+    {{ end }}
+    <!-- Code that all your templates share, like a header -->
+    <div class="columns container is-fluid">
+      <main class="column">
+        {{ block "main" . }}
+        <!-- The part of the page that begins to differ between templates -->
+        {{ end }}
+      </main>
+      <aside class="column-1">
+        <div class="box">
+          <ul>
+            {{ range .Site.Sections }}
+            <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+            {{ end }}
+          </ul>
+        </div>
+        <div class="box menu">
+          {{ range $taxonomyname, $taxonomy := .Site.Taxonomies }}
+          <div class="block">
+            <h3 class="menu-label"><a href="{{ "/" | relLangURL}}{{ $taxonomyname | urlize }}">{{ $taxonomyname }}</a></h3>
+            <ul>
+              {{ range $termname, $term := $taxonomy }}
+              <li class="menu-list"><a href="{{ "/" | relLangURL}}{{ $taxonomyname | urlize }}/{{$termname | urlize}}">{{ $termname }}({{ $term.Count }})</a></li>
+              {{ end }}
+            </ul>
+          </div>
+          {{ end }}
+          </ul>
+        </div>
+      </aside>
+    </div>
+    <footer class="footer">
+      {{ block "footer" . }}
+      <!-- More shared code, perhaps a footer but that can be overridden if need be in  -->
+      {{ .Site.Copyright | safeHTML }}
+      {{ end }}
+    </footer>
+  </body>
+</html>
