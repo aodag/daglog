@@ -1,0 +1,22 @@
+{{ define "pagination" }}
+<nav class="pagination">
+  {{ with .paginator }}
+  {{ if .HasPrev }}
+  <a class="pagination-previous" href="{{ .Prev.URL }}">Previous</a>
+  {{ end }}
+  {{ if .HasNext }}
+  <a class="pagination-next" href="{{ .Next.URL }}">Next page</a>
+  {{ end }}
+  {{ $current := .PageNumber }}
+  <ul class="pagination-list">
+    {{ range .Pagers }}
+    {{ if eq .PageNumber $current }}
+    <li><a href="{{ .URL }}" class="pagination-link is-current">{{ .PageNumber }}</a></li>
+    {{ else }}
+    <li><a href="{{ .URL }}" class="pagination-link">{{ .PageNumber }}</a></li>
+    {{ end }}
+    {{ end }}
+  </ul>
+  {{ end }}
+</nav>
+{{ end }}

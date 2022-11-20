@@ -1,0 +1,13 @@
+{{ define "main" }}
+<h1 class="title">{{ .Title }}</h1>
+{{ range first 5 .Site.RegularPages }}
+<div class="block">
+  <h2 class="title"><a href="{{.Permalink}}">{{.Date.Format "2006-01-02"}} | {{.Title}}</a>
+    {{ range .Params.tags }}
+    <a href="/tags/{{ . }}" class="tag">{{ . }}</a>
+    {{ end }}
+    </h2>
+    {{ .Summary }}
+</div>
+{{ end }}
+{{ end }}

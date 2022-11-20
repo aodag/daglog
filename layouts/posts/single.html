@@ -1,0 +1,14 @@
+{{ define "main" }}
+<h1 class="title">{{ .Title }}</h1>
+<h2></h2>
+{{.Date.Format "2006-01-02"}}
+{{ range .Params.categories }}
+<a href="/categories/{{ . | urlize}}">{{ . }}</a>
+{{ end }}
+{{ range .Params.tags }}
+<a class="tag" href="/tags/{{ . | urlize }}">{{ . }}</a>
+{{ end }}
+<article class="content">
+  {{ .Content }}
+</article>
+{{ end }}
