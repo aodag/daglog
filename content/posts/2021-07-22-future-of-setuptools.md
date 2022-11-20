@@ -1,6 +1,8 @@
 ---
 title: setuptoolsの未来
 date: 2021-07-22
+tags: ["python", "packaging"]
+categories: ["programming"]
 ---
 
 [setuptools](https://setuptools.readthedocs.io/en/latest/)はPythonにおけるライブラリ配布のためのツールとして長らく利用されています。
